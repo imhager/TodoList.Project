@@ -31,7 +31,9 @@ namespace TodoList.Project.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            List<TodoUser> users = _userService.GetAll();
+
+            return View(users);
         }
 
         public IActionResult GetUser(int? id)

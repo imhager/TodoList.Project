@@ -1,3 +1,34 @@
 ﻿@{
     ViewData["Title"] = "User Index";
 }
+@model List<TodoList.Entity.TodoUser>
+<div class="panel panel-default" style="margin:15px;">
+    <div class="panel-heading">
+        <p class="panel-title">User List</p>
+    </div>
+    <div class="items panel-body">
+        @foreach (var item in Model)
+        {
+            <div class="reply" data-id="@item.Id" id="@item.Id">
+                <div class="infos">
+                    <div class="info">
+                        <span class="name">
+                            <a href="/User/Edit/@item.Id">@item.NickName (@item.UserName)</a>
+                        </span>
+                        <span class="time">
+                            · <abbr class="timeago">
+                                @item.Brithday.ToString("yyyy-MM-dd")
+                            </abbr>
+                        </span>
+                    </div>
+                    <div class="markdown">
+                        <p>asdfasdfadsf</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@*<p>@item.Id</p><p>@item.UserName</p><p>@item.NickName</p><p>@item.Brithday.ToString("yyyy-MM-dd")</p><p><a href="/User/Edit/@item.Id">Edit</a></p>*@
+

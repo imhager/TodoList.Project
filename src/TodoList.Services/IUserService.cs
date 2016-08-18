@@ -9,7 +9,7 @@ namespace TodoList.Services
     public interface IUserService
     {
 
-
+        List<TodoUser> GetAll();
 
         Task<TodoUser> GetUser(int userid);
 

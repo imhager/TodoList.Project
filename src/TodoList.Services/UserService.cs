@@ -13,9 +13,9 @@ namespace TodoList.Services
     public class UserService : IUserService
     {
         private readonly ILogger<UserService> _logger;
-        private readonly SqlLitesDbContext _dbContext;
+        private readonly SqlitesWithIdentityDbContext _dbContext;
 
-        public UserService(ILogger<UserService> logger, SqlLitesDbContext dbContext)
+        public UserService(ILogger<UserService> logger, SqlitesWithIdentityDbContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
@@ -52,6 +52,11 @@ namespace TodoList.Services
         public bool SaveChange()
         {
             return _dbContext.SaveChanges() > 0;
+        }
+
+        public List<TodoUser> GetAll()
+        {
+            return _dbContext.TodoUsers.ToList();
         }
     }
 }

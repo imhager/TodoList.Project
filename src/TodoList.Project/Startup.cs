@@ -112,7 +112,7 @@ namespace TodoList.Project
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var db = serviceScope.ServiceProvider.GetService<SqlLitesDbContext>();
+                var db = serviceScope.ServiceProvider.GetService<SqlitesWithIdentityDbContext>();
                 db.Database.EnsureCreated();
             }
         }
