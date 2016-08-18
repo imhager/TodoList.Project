@@ -1,0 +1,16 @@
+/src/TodoList.DbMapping/bin
+/src/TodoList.DbMapping/obj
+/src/TodoList.DbMapping/TodoList.DbMapping.xproj.user
+/src/TodoList.Entity/TodoList.Entity.xproj.user
+/src/TodoList.Entity/bin
+/src/TodoList.Entity/obj
+/src/TodoList.Framework/TodoList.Framework.xproj.user
+/src/TodoList.Framework/bin
+/src/TodoList.Framework/obj
+/src/TodoList.Project/TodoList.Project.xproj.user
+/src/TodoList.Project/bin
+/src/TodoList.Project/Logs
+/src/TodoList.Project/obj
+/src/TodoList.Services/TodoList.Services.xproj.user
+/src/TodoList.Services/bin
+/src/TodoList.Services/obj
