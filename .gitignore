@@ -14,3 +14,5 @@
 /src/TodoList.Services/TodoList.Services.xproj.user
 /src/TodoList.Services/bin
 /src/TodoList.Services/obj
+/src/TodoList.Api/obj
+/src/TodoList.Api/bin
