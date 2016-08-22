@@ -16,3 +16,4 @@
 /src/TodoList.Services/obj
 /src/TodoList.Api/obj
 /src/TodoList.Api/bin
+/src/TodoList.Api/Logs

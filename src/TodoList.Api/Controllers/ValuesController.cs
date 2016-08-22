@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TodoList.Framework;
+using Microsoft.Extensions.Logging;
 
 namespace TodoList.Api.Controllers
 {
@@ -11,10 +12,12 @@ namespace TodoList.Api.Controllers
     public class ValuesController : Controller
     {
         private IJsonSerializable _jsonSerializable;
+        private ILogger<ValuesController> _logger;
 
-        public ValuesController(IJsonSerializable jsonSerializable)
+        public ValuesController(IJsonSerializable jsonSerializable, ILogger<ValuesController> logger)
         {
             _jsonSerializable = jsonSerializable;
+            _logger = logger;
         }
 
         // GET api/values
@@ -23,11 +26,13 @@ namespace TodoList.Api.Controllers
         {
             //return new string[] { "value1", "value2" };
             var s = new string[] { "value1", "value2", "value3", "value4" };
+            var result = _jsonSerializable.ToJson(s);
+            _logger.LogInformation(result);
 
-            return _jsonSerializable.ToJson(s);
+            return result;
         }
 
-       
+
 
         // GET api/values/5
         [HttpGet("{id}")]

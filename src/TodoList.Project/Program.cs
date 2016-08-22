@@ -14,9 +14,9 @@ namespace TodoList.Project
         {
 
             //方式一，引入文件 自定义server.urls
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("Config/hostsettngs.json", optional: true, reloadOnChange: true).Build();
+            //var config = new ConfigurationBuilder()
+            //    .SetBasePath(Directory.GetCurrentDirectory())
+            //    .AddJsonFile("Config/hostsettngs.json", optional: true, reloadOnChange: true).Build();
             
 
             // 方式二，需要引入Microsoft.Extensions.Configuration.CommandLine
@@ -26,7 +26,8 @@ namespace TodoList.Project
             //   .Build();
 
             var host = new WebHostBuilder()
-                .UseConfiguration(config) // 使用自定义server.urls，可以开启多个端口
+                //.UseConfiguration(config) // 使用自定义server.urls，可以开启多个端口
+                //.UseUrls("http://localhost:9527;http://localhost:9528;http://*:9529")
                 .UseKestrel() // 跨平台服务
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration() // IIS扩展运行，需要在IIS上安装一个扩展

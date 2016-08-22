@@ -24,8 +24,9 @@ namespace TodoList.Project
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("Config/appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"Config/appsettings.{env.EnvironmentName}.json", optional: true)
+                //.AddJsonFile($"Config/hostsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();

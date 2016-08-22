@@ -1,11 +1,48 @@
+### 列表内容
+> https://docs.asp.net/en/latest/fundamentals/index.html
+* Middleware
+* Working with Static Files
+* Routing
+* Error Handling
+* Globalization and localization
+* Configuration
+* Logging
+* File Providers
+* Dependency Injection
+* Working with Multiple Environments
+* Hosting
+* Managing Application State
+* Servers
+* Request Features
+* Open Web Interface for .NET (OWIN)
+* Choosing the Right .NET For You on the Server
+* taghelper
+  * 以大写字母分割，如果是由多个字母组成，那么就会把单词变成全小写，然后用-分割开来；
+      * 比如：CountryListTagHelper----> country-list;
+      * 如果是：CountrylistTagHelper----> countrylist;
+
+
 ### TODOList
- * Startup：
+ * **Startup**：
+   * 程序启动点
    * http://asp.net-hacker.rocks/2016/02/17/dependency-injection-in-aspnetcore.html
- * Configuration
- * IApplicationBuilder
- * IConfigurationRoot
- * Middleware
- * ILoggingFactory
+ * **Configuration**
+   * aa
+ * **IApplicationBuilder**
+   * aa
+ * **IConfigurationRoot**
+   * 配置文件
+ * **Middleware**
+   * 中间件，在pipline处理过程中，可以增加无数个moddleware，也可以提前结束一个请求（比如权限、角色判定、Ip地址检测白名单等）
+ * **ILoggingFactory**
+   * 日志公用接口，第三方扩展，如果实现了该接口，一样可以使用。比如NLog；（需要引用NLog.Extensions.Logging）
+
+ * **如何使用Autofac替换系统自带的DI**
+   * 引入autofac依赖（Autofac、Autofac.Extensions.DependencyInjection）
+   * 将ConfigureServices返回值更改为IServiceProvider而不是系统自带的void；（当使用系统的DI工具时，返回值是void）
+   * 
+
+### 生命周期说明
  * **Transient**
    * Transient 服务在每次请求时被创建，它最好被用于轻量级无状态服务（如我们的Repository和ApplicationService服务）
  * **Scoped**

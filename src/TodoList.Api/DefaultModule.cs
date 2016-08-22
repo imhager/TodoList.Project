@@ -7,6 +7,9 @@ using TodoList.Framework;
 
 namespace TodoList.Api
 {
+    /// <summary>
+    /// 通过Module注入方式
+    /// </summary>
     public class DefaultModule : Module
     {
         protected override void Load(ContainerBuilder builder)

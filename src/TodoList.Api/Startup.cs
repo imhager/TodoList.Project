@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using TodoList.Framework;
+using NLog.Extensions.Logging;
 
 namespace TodoList.Api
 {
@@ -39,7 +40,8 @@ namespace TodoList.Api
             services.AddMvc();
 
             var containerBuilder = new ContainerBuilder();
-            // DI http://www.cnblogs.com/yanbinliu/p/5170737.html
+
+            // DI 第一种方式，http://www.cnblogs.com/yanbinliu/p/5170737.html
             containerBuilder.RegisterType<JsonSerializableHelper>().As<IJsonSerializable>().InstancePerLifetimeScope();
 
             // DI  第二种方式，注入module形式
@@ -54,8 +56,11 @@ namespace TodoList.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddNLog();// 添加NLog
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+
 
             app.UseMvc();
         }
