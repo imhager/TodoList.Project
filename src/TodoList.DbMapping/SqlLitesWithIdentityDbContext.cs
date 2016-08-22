@@ -20,7 +20,7 @@ namespace TodoList.DbMapping
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<TodoUser>().ToTable("TodoUser").HasKey("Id");
+            builder.Entity<TodoUser>().ToTable("TodoUser").HasKey("Id"); // 好像sqlite默认id为自增主键
         }
     }
 }

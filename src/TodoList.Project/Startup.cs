@@ -60,8 +60,7 @@ namespace TodoList.Project
 
             //services.AddTransient<IDbContextSelector, SqlLitesDbContext>();
             // todo 后需更改为json、xml配置文件读取方式
-            services.AddTransient<IUserService, UserService>();
-            services.AddScoped<IJsonSerializable, JsonSerializableHelper>();
+            services.RegisterServices();// 抽取到另外一个扩展类中，精简startup中的注入
 
         }
 
