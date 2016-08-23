@@ -20,6 +20,13 @@
   * 以大写字母分割，如果是由多个字母组成，那么就会把单词变成全小写，然后用-分割开来；
       * 比如：CountryListTagHelper----> country-list;
       * 如果是：CountrylistTagHelper----> countrylist;
+  * 特别注意的是：需要在引用自定义TagHelper的页面，引入以下代码：(因为不了解嘛，所以踩了坑了，好久没好用)
+  
+```c#  
+@addTagHelper *,TodoList.Project
+// 格式：@addTagHelper typeName,AssemblyName
+```
+
 
 
 ### TODOList
