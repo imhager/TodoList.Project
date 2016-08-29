@@ -29,7 +29,8 @@
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "TodoList.Framework": "1.0.0-*",
     "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
-    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0"  },
+    "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0",
+    "Microsoft.AspNetCore.Http.Abstractions": "1.0.0"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

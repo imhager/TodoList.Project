@@ -24,14 +24,21 @@
             <div class="form-group">
                 <label for="inputBrithday" class="col-sm-2 control-label">Brithday</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputBrithday" placeholder="填写Brithday" required asp-for="Brithday" />
+                    <input type="text" class="form-control" id="inputBrithday" asp-format="yyyy-MM-dd" placeholder="填写Brithday" required asp-for="Brithday" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputSex" class="col-sm-2 control-label">Sex</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputSex" placeholder="填写性别" required asp-for="Sex" />
+                    @*<input type="text" class="form-control" id="inputSex" placeholder="填写性别" required asp-for="Sex" />*@
+                    <select asp-for="Sex" class="form-control" id="inputSex" asp-items="@ViewBag.gender">
+                        <option selected="selected" value="">Choose gender</option>
+                    </select>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCreateTime" class="col-sm-2 control-label">CreateTime</label>
+                <input type="text" class="form-control" asp-for="CreateTime" asp-format="yyyy-MM-dd HH:mm" id="inputCreateTime" placeholder="创建时间"/>
             </div>
 
             <div class="form-group">

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -31,7 +32,7 @@ namespace TodoList.Project.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<TodoUser> users = _userService.GetAll();
+            IEnumerable<TodoUser> users = _userService.GetAll().ToList();
 
             return View(users);
         }
@@ -51,6 +52,15 @@ namespace TodoList.Project.Controllers
 
         public IActionResult AddUser()
         {
+            SelectListItem[] items =
+            {
+                new SelectListItem() {Text = "男♂", Value = "1"},
+                new SelectListItem() {Text = "女♀", Value = "0"}
+            };
+
+
+            ViewBag.gender = items;
+
             return View();
         }
 
@@ -60,6 +70,7 @@ namespace TodoList.Project.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.CreateTime = DateTime.Now;
                 _userService.AddUser(user);
                 bool result = _userService.SaveChange();
                 _logger.LogInformation("addUser:{0}", _jsonSerializable.ToJson(user));
@@ -79,6 +90,16 @@ namespace TodoList.Project.Controllers
 
             TodoUser model = _userService.GetUser(id.Value).Result;
 
+            if (model == null) return RedirectToAction("404", "Page"); // 路由重写，对应的是Error/Notfound404
+
+            SelectListItem[] items =
+            {
+                new SelectListItem() {Text = "男♂", Value = "1"},
+                new SelectListItem() {Text = "女♀", Value = "0"}
+            };
+
+
+            ViewBag.gender = items;
             return View(model);
         }
 
@@ -93,6 +114,7 @@ namespace TodoList.Project.Controllers
 
             if (ModelState.IsValid)
             {
+                user.CreateTime = DateTime.Now;
                 _userService.Update(user);
                 //_userService.SaveChange();
 

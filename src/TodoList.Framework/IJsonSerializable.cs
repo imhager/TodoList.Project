@@ -8,6 +8,6 @@ namespace TodoList.Framework
     public interface IJsonSerializable
     {
         string ToJson(object value);
-        T ToObject<T>(string value) where T : class, new();
+        T ToObject<T>(string value) where T : class;
     }
 }

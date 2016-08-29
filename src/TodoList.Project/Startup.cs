@@ -15,6 +15,7 @@ using TodoList.DbMapping;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Entity;
 using TodoList.Framework;
+using TodoList.Project.Extensions;
 
 namespace TodoList.Project
 {
@@ -79,6 +80,10 @@ namespace TodoList.Project
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            // 自定义middleware
+            app.UseRequestLogger();
+
+            // 初始化数据库
 
             InitializeDatabase(app.ApplicationServices);
 

@@ -11,8 +11,8 @@ namespace TodoList.Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private IJsonSerializable _jsonSerializable;
-        private ILogger<ValuesController> _logger;
+        private readonly IJsonSerializable _jsonSerializable;
+        private readonly ILogger<ValuesController> _logger;
 
         public ValuesController(IJsonSerializable jsonSerializable, ILogger<ValuesController> logger)
         {

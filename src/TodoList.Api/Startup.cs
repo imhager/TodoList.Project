@@ -37,6 +37,10 @@ namespace TodoList.Api
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            //services.AddCaching();
+            //services.AddSession();
+
+
             services.AddMvc();
 
             var containerBuilder = new ContainerBuilder();
@@ -61,6 +65,7 @@ namespace TodoList.Api
             loggerFactory.AddDebug();
 
 
+            //app.UseSession();// 使用session
 
             app.UseMvc();
         }

@@ -2,8 +2,11 @@
   "version": "1.0.0-*",
 
   "dependencies": {
+    "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Caching.Abstractions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.0",
+    "protobuf-net": "2.1.0"
   },
 
   "frameworks": {

@@ -30,7 +30,10 @@
             <div class="form-group">
                 <label for="inputSex" class="col-sm-2 control-label">Sex</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputSex" placeholder="填写性别" required asp-for="Sex" />
+                    @*<input type="text" class="form-control" id="inputSex" placeholder="填写性别" required asp-for="Sex" />*@
+                    <select asp-for="Sex" id="inputSex" asp-items="@ViewBag.gender">
+                        <option value="">Choose gender</option>
+                    </select>
                 </div>
             </div>
 

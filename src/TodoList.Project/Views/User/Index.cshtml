@@ -1,9 +1,10 @@
 ﻿@{
     ViewData["Title"] = "User Index";
 }
-@addTagHelper *,TodoList.Project
+@*@addTagHelper *,TodoList.Project*@
+@addTagHelper "TodoList.Project.Extensions.CountryListTagHelper,TodoList.Project"
 
-@model List<TodoList.Entity.TodoUser>
+@model IEnumerable<TodoList.Entity.TodoUser>
 <div class="panel panel-default" style="margin:15px;">
     <div class="panel-heading">
         <p class="panel-title">User List</p>
@@ -22,6 +23,11 @@
                                 @item.Brithday.ToString("yyyy-MM-dd")
                             </abbr>
                         </span>
+                        <span class="time">
+                            · <abbr class="timeago">
+                                @item.CreateTime.ToString("yyyy-MM-dd")
+                            </abbr>
+                        </span>
                     </div>
                     <div class="markdown">
                         <p>aa</p>
@@ -32,6 +38,8 @@
     </div>
 </div>
 aa
-<country-list selected-value="China"></country-list>
+@*<country-list selected-value="China"></country-list>
+<country-list selected-value="Japan"></country-list>*@
+bb<country-lists selected-value="Japan"></country-lists>
 @*<p>@item.Id</p><p>@item.UserName</p><p>@item.NickName</p><p>@item.Brithday.ToString("yyyy-MM-dd")</p><p><a href="/User/Edit/@item.Id">Edit</a></p>*@
 

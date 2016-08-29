@@ -54,7 +54,7 @@ namespace TodoList.Services
             return _dbContext.SaveChanges() > 0;
         }
 
-        public List<TodoUser> GetAll()
+        public IEnumerable<TodoUser> GetAll()
         {
             return _dbContext.TodoUsers.ToList();
         }

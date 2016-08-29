@@ -17,7 +17,9 @@
     "Autofac": "4.0.0",
     "Autofac.Extensions.DependencyInjection": "4.0.0",
     "TodoList.Framework": "1.0.0-*",
-    "NLog.Extensions.Logging": "1.0.0-rtm-alpha4"
+    "NLog.Extensions.Logging": "1.0.0-rtm-alpha4",
+    "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+    "Microsoft.AspNetCore.Session": "1.0.0"
   },
 
   "tools": {

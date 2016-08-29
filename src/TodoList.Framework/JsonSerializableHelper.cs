@@ -14,7 +14,7 @@ namespace TodoList.Framework
             return JsonConvert.SerializeObject(value);
         }
 
-        public T ToObject<T>(string value) where T : class, new()
+        public T ToObject<T>(string value) where T : class
         {
             return JsonConvert.DeserializeObject<T>(value);
         }

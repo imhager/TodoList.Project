@@ -24,6 +24,24 @@ namespace TodoList.Entity
         /// </summary>
         public string QRUrl { get; set; }
 
+        //private DateTime _createDateTime;
+
+        //public DateTime CreateTime
+        //{
+        //    get { return _createDateTime; }
+        //    set
+        //    {
+        //        if (_createDateTime == DateTime.MinValue)
+        //        {
+        //            _createDateTime = DateTime.Now;
+        //        }
+        //        else
+        //        {
+        //            _createDateTime = value;
+        //        }
+        //    }
+        //}
+
         public DateTime CreateTime { get; set; }
     }
 }
