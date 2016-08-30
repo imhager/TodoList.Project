@@ -90,3 +90,22 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
  
 
 ### lession 2 利用VS2015开发项目
+> 后补
+
+### lession 3 发布到IIS上运行NetCore项目
+> IIS 上运行NetCore项目是有版本限制的。官方给的说明是：
+> 
+> The following operating systems are supported:
+>  * Windows 7 and newer
+>  * Windows Server 2008 R2 and newer*
+
+#### 简单几个步骤是：
+* 安装IIS;(忽略步骤)
+*  Install the .NET Core Windows Server Hosting bundle；https://go.microsoft.com/fwlink/?LinkId=817246
+   *  Install the .NET Core Windows Server Hosting bundle on the server. The bundle will install the .NET Core Runtime, .NET Core Library, and the ASP.NET Core Module. The module creates the reverse-proxy between IIS and the Kestrel server.
+   *  Execute iisreset at the command line or restart the server to pickup changes to the system PATH.
+* Enabling the IISIntegration components，主要是在Program.cs中```.UseIISIntegration()``` // IIS扩展运行，需要在IIS上安装一个扩展
+* 如果发布到IIS上，还需要一个工具```Microsoft.AspNetCore.Server.IISIntegration.Tools```;
+* 最重要的一步就是，发布项目（我是以文件系统的形式发布的），需要在创建站点时，指向这个目录。比如我的：```D:\TodoList\Release\PublishOutput```;
+* 另外就是，在应用程序池设置时，需要设置为“无托管代码”的集成形式；
+* 最后就是浏览你的NetCore站点了；

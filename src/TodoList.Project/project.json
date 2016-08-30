@@ -30,7 +30,8 @@
     "TodoList.Framework": "1.0.0-*",
     "Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
     "Microsoft.AspNetCore.Mvc.TagHelpers": "1.0.0",
-    "Microsoft.AspNetCore.Http.Abstractions": "1.0.0"  },
+    "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+    "BundlerMinifier.Core": "2.2.281"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",
