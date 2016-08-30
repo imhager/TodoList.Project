@@ -1,3 +1,6 @@
+### 2016-8-30
+ * bootstrap弹层 http://www.runoob.com/bootstrap/bootstrap-modal-plugin.html
+
 ### 列表内容
 > https://docs.asp.net/en/latest/fundamentals/index.html
 * Middleware
@@ -27,7 +30,8 @@
 // 格式：@addTagHelper typeName,AssemblyName
 ```
 
-
+* redis 使用
+  * http://www.cnblogs.com/savorboard/p/5592948.html
 
 ### TODOList
  * **Startup**：

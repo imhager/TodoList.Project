@@ -16,11 +16,13 @@ namespace TodoList.DbMapping
         public SqlitesWithIdentityDbContext(DbContextOptions<SqlitesWithIdentityDbContext> options) : base(options) { }
 
         public DbSet<TodoUser> TodoUsers { get; set; }
+        public DbSet<TodoItem> TodoItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<TodoUser>().ToTable("TodoUser").HasKey("Id"); // 好像sqlite默认id为自增主键
+            builder.Entity<TodoItem>().ToTable("TodoItem").HasKey("Id");
         }
     }
 }

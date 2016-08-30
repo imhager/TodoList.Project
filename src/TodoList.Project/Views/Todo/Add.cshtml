@@ -1,0 +1,54 @@
+﻿@using System.Threading.Tasks
+@using TodoList.Entity.Enums
+@model TodoList.Entity.TodoItem
+@{
+    ViewData["Title"] = "add todo item";
+}
+
+<div class="panel panel-default" style="padding:8px">
+    <form class="form-horizontal" asp-controller="Todo" asp-action="Add" method="post">
+        <div class="row">
+            <div class="form-group">
+                <label for="inputTitle" class="col-sm-2 control-label">待办标题</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTitle" placeholder="待办标题" required asp-for="Title" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputDescript" class="col-sm-2 control-label">简述</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputDescript" placeholder="待办简述" required asp-for="Descript" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputStatus" class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-10">
+                    <select asp-for="Status" id="inputStatus">
+                        <option value="">--请选择--</option>
+                        <option value="-1">作废</option>
+                        <option value="0" selected="selected">新建</option>
+                        <option value="1">处理中</option>
+                        <option value="2">已完成</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputLevel" class="col-sm-2 control-label">Level</label>
+                <div class="col-sm-10">
+                    <select asp-for="Level" id="inputLevel">
+                        <option value="">--请选择--</option>
+                        <option value="0" selected="selected">重要&紧急</option>
+                        <option value="1">重要&不紧急</option>
+                        <option value="2">紧急&不重要</option>
+                        <option value="3">不重要&不紧急</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">add</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
