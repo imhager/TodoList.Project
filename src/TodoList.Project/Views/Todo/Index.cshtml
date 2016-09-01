@@ -47,7 +47,7 @@
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfaa_@item.Id" @Selected(item.Status)>
-                        @item.Title
+                        <a asp-action="Edit" asp-controller="Todo" asp-route-id="@item.Id">@item.Title</a>
 
                         <sup>
                             <span style="background-color: @ConvertStr(item.Status);color:white;">
@@ -69,7 +69,7 @@
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfab_@item.Id" @Selected(item.Status)>
-                        @item.Title
+                        <a asp-action="Edit" asp-controller="Todo" asp-route-id="@item.Id">@item.Title</a>
                         <sup>
                             <span style="background-color: @ConvertStr(item.Status); color: white;">
                                 @Enum.Parse(typeof(TodoStatusEnum), item.Status.ToString())
@@ -91,7 +91,7 @@
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfbc_@item.Id" @Selected(item.Status)>
-                        @item.Title
+                        <a asp-action="Edit" asp-controller="Todo" asp-route-id="@item.Id">@item.Title</a>
                         <sup>
                             <span style="background-color: @ConvertStr(item.Status); color: white;">
                                 @Enum.Parse(typeof(TodoStatusEnum), item.Status.ToString())
@@ -111,7 +111,7 @@
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfcc_@item.Id" @Selected(item.Status)>
-                        @item.Title
+                        <a asp-action="Edit" asp-controller="Todo" asp-route-id="@item.Id">@item.Title</a>
                         <sup>
                             <span style="background-color:  @ConvertStr(item.Status); color: white;">
                                 @Enum.Parse(typeof(TodoStatusEnum), item.Status.ToString())

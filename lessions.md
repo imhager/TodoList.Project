@@ -93,7 +93,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 > 后补
 
 ### lession 3 发布到IIS上运行NetCore项目
-> IIS 上运行NetCore项目是有版本限制的。官方给的说明是：
+> IIS 上运行NetCore项目是有版本限制的。官方给的说明是：https://docs.asp.net/en/latest/publishing/iis.html
 > 
 > The following operating systems are supported:
 >  * Windows 7 and newer
@@ -109,3 +109,78 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 * 最重要的一步就是，发布项目（我是以文件系统的形式发布的），需要在创建站点时，指向这个目录。比如我的：```D:\TodoList\Release\PublishOutput```;
 * 另外就是，在应用程序池设置时，需要设置为“无托管代码”的集成形式；
 * 最后就是浏览你的NetCore站点了；
+
+### lession 4 使用自定义配置文件设置server.urls,托管多个端口
+> 需要在Program.cs中，引入配置文件；比如
+
+```C#
+     public static void Main(string[] args)
+        {
+
+            //方式一，引入文件 自定义server.urls
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Config/hostsettings.Development.json", optional: true, reloadOnChange: true).Build();
+
+
+            // 方式二，需要引入Microsoft.Extensions.Configuration.CommandLine
+            // 然后，执行dotnet run --server.urls "http://localhost:5001;http://localhost:5002;http://*:5003"
+            //var config = new ConfigurationBuilder()
+            //   .AddCommandLine(args)
+            //   .Build();
+
+            var host = new WebHostBuilder()
+                .UseConfiguration(config) // 使用自定义server.urls，可以开启多个端口
+                //.UseUrls("http://localhost:9527;http://localhost:9528;http://*:9529")
+                .UseKestrel() // 跨平台服务
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration() // IIS扩展运行，需要在IIS上安装一个扩展
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
+```
+
+* 配置文件如下：
+```json
+    {
+        "server.urls": "http://localhost:5001;http://localhost:5002;http://*:5003"
+    }
+```
+
+* 后续通过命令，执行```dotnet TodoList.Project.dll``` 就可以看到指定的端口已经被监控了。
+```bash
+    D:\TodoList.Release>dotnet TodoList.Project.dll
+info: Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommandBuilderFactory[1]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      PRAGMA foreign_keys=ON;
+info: Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommandBuilderFactory[1]
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      PRAGMA foreign_keys=ON;
+info: Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommandBuilderFactory[1]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+info: Microsoft.Extensions.DependencyInjection.DataProtectionServices[0]
+      User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' 
+    as key repository and Windows DPAPI to encrypt keys at
+ rest.
+Hosting environment: Production
+Content root path: D:\TodoList.Release
+Now listening on: http://localhost:5001
+Now listening on: http://localhost:5002
+Now listening on: http://*:5003
+Application started. Press Ctrl+C to shut down.
+```
+
+* 另外，netcore可以指定很多运行环境，通过设置runtimes环境，Nuget会自动下载对应系统环境下依赖包，实现跨平台的发布：
+  ```json
+  "runtimes": {
+        "win7-x64": {},
+        //"win7-x86": {},
+        //"osx.10.10-x64": {},
+        //"osx.10.11-x64": {},
+        "ubuntu.16.04-x64": {} //,
+        //"centos.7-x64": {}
+  },
+ ```

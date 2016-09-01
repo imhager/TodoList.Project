@@ -56,6 +56,7 @@ namespace TodoList.Project.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Add(TodoItem item)
         {
             if (ModelState.IsValid)
@@ -84,14 +85,24 @@ namespace TodoList.Project.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(TodoItem item)
         {
             if (ModelState.IsValid)
             {
-                item.UpdateTime = DateTime.Now;
-                _todoItemService.Update(item);
+                var model = _todoItemService.GetSingle(item.Id);
+                if (model != null)
+                {
+                    model.Title = item.Title;
+                    model.Descript = item.Descript;
+                    model.Status = item.Status;
+                    model.Level = item.Level;
+                    model.UpdateTime = DateTime.Now;
 
-                return RedirectToAction("Index");
+                    _todoItemService.Update(model);
+
+                    return RedirectToAction("Index");
+                }
             }
 
             return View("Edit");
