@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\visual studio 2015\Projects\TodoList.Project\src\TodoList.Project\.\bin\Release\PublishOutput</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\TodoList.Release</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

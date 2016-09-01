@@ -43,7 +43,7 @@
         <h2 class="glyphicon glyphicon-calendar">重要&紧急的事情 <a asp-action="Add" class="btn btn-link" asp-controller="Todo">添加待办</a></h2><hr />
         <ul class="list-group">
             @{
-                foreach (var item in ViewBag.AAList as IEnumerable<TodoItem>)
+                foreach (var item in (IEnumerable<TodoItem>) ViewBag.AAList)
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfaa_@item.Id" @Selected(item.Status)>
@@ -65,7 +65,7 @@
         <h2 class="glyphicon glyphicon-calendar">重要&不紧急的事情 <a asp-action="Add" class="btn btn-link" asp-controller="Todo">添加待办</a></h2><hr />
         <ul class="list-group">
             @{
-                foreach (var item in ViewBag.ABList as IEnumerable<TodoItem>)
+                foreach (var item in (IEnumerable<TodoItem>) ViewBag.ABList)
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfab_@item.Id" @Selected(item.Status)>
@@ -87,7 +87,7 @@
         <h2 class="glyphicon glyphicon-calendar">不重要&紧急的事情 <a asp-action="Add" class="btn btn-link" asp-controller="Todo">添加待办</a></h2><hr />
         <ul class="list-group">
             @{
-                foreach (var item in ViewBag.BCList as IEnumerable<TodoItem>)
+                foreach (var item in (IEnumerable<TodoItem>) ViewBag.BCList)
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfbc_@item.Id" @Selected(item.Status)>
@@ -107,7 +107,7 @@
         <h2 class="glyphicon glyphicon-calendar">不重要&不紧急的事情 <a asp-action="Add" class="btn btn-link" asp-controller="Todo">添加待办</a></h2><hr />
         <ul class="list-group">
             @{
-                foreach (var item in ViewBag.CCList as IEnumerable<TodoItem>)
+                foreach (var item in (IEnumerable<TodoItem>) ViewBag.CCList)
                 {
                     <li class="list-group-item">
                         <input type="checkbox" onclick="doit(@item.Id,@item.Status);" id="chkfcc_@item.Id" @Selected(item.Status)>
